@@ -1,12 +1,10 @@
 # Desafio: Obter a lista e a contagem de números pares entre dois números informados pelo usuário
 
-def get_even_numbers(a, b):
+def get_even_numbers(a: int, b: int):
     if a == b:
         return []
     first_number, last_number = (a, b) if a < b else (b, a)
-    evens = []
-    [evens.append(i)
-     for i in range(first_number + 1, last_number) if i % 2 == 0]
+    evens = [i for i in range(first_number + 1, last_number) if i % 2 == 0]
     return {'evens': evens, 'count': len(evens)}
 
 
