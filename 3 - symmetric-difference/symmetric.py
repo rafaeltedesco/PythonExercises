@@ -1,21 +1,26 @@
 from functools import reduce
 
 
-def get_symmetric(*args):
-    flatten_list = reduce(lambda a, b: a + b, args)
+def flat_list(args):
+    return reduce(lambda a, b: a + b, args)
 
-    symmetric_list = []
 
-    flatten_list = set(flatten_list)
-
+def count_ocurrencies(flatten_list, args):
     for n in flatten_list:
-        occurrences = 0
+        ocurrencies = 0
         for row in args:
             for col in set(row):
                 if col == n:
-                    occurrences += 1
+                    ocurrencies += 1
+        yield ocurrencies, n
 
-        if occurrences == 1:
+
+def get_symmetric(*args):
+    flatten_list = set(flat_list(args))
+
+    symmetric_list = []
+    for ocurrencies, n in count_ocurrencies(flatten_list, args):
+        if ocurrencies == 1:
             symmetric_list.append(n)
 
     return sorted(symmetric_list)
