@@ -13,3 +13,7 @@
 - [2 - palindrome](https://github.com/rafaeltedesco/PythonExercises/tree/master/2%20-%20palindrome)
 
 > Retornar se uma sequência de caracteres é um palíndromo ou não
+
+- [3 - symmetric difference](https://github.com/rafaeltedesco/PythonExercises/tree/master/3%20-%20symmetric-difference)
+
+> Retorna a diferneça simétrica entre listas
