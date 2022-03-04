@@ -17,7 +17,6 @@ class TestPrimeNumbers(unittest.TestCase):
       self.assertNotEqual(is_prime_number(number), True, f'O número {number} deve retornar False!')
     
 
-
 if __name__ == '__main__':
   unittest.main()
   

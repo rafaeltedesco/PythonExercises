@@ -1,8 +1,4 @@
 
-
-from typing import List
-
-
 def is_prime_number(number: int):
   """
     Função deve verificar se número é primo ou não
