@@ -17,3 +17,7 @@
 - [3 - symmetric difference](https://github.com/rafaeltedesco/PythonExercises/tree/master/3%20-%20symmetric-difference)
 
 > Retorna a diferneça simétrica entre listas
+
+- [4 - prime numbers](https://github.com/rafaeltedesco/PythonExercises/tree/master/4%20-%20prime_numbers)
+
+> Retorna se um número é primo ou não
