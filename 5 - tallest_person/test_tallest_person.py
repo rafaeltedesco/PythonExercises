@@ -20,6 +20,14 @@ def sum_heights(person, next_person):
     return {'height': person['height'] + next_person['height']}
 
 
+def get_tallest(person, next_person):
+    return person if person['height'] > next_person['height'] else next_person
+
+
+def get_mean_by_sex(total_height, sex, persons):
+    return round(total_height / len(list(get_persons_by_sex(sex, persons))), 2)
+
+
 class TestTallestPerson(unittest.TestCase):
 
     def setUp(self):
@@ -39,19 +47,20 @@ class TestTallestPerson(unittest.TestCase):
                         for i in range(len(self.heights))]
 
         self.tallest_man = reduce(
-            lambda person, next_person: person if person['height'] > next_person['height'] else next_person, get_persons_by_sex('M', self.persons))
+            get_tallest, get_persons_by_sex('M', self.persons))
         self.tallest_woman = reduce(
-            lambda person, next_person: person if person['height'] > next_person['height'] else next_person, get_persons_by_sex('F', self.persons))
+            get_tallest, get_persons_by_sex('F', self.persons))
 
         self.total_men = reduce(
             sum_heights, get_persons_by_sex('M', self.persons), {'height': 0})
         self.total_women = reduce(
             sum_heights, get_persons_by_sex('F', self.persons), {'height': 0})
 
-        self.avg_men = round(self.total_men['height'] /
-                             len(list(get_persons_by_sex('M', self.persons))), 2)
-        self.avg_women = round(self.total_women['height'] /
-                               len(list(get_persons_by_sex('F', self.persons))), 2)
+        self.avg_men = get_mean_by_sex(
+            self.total_men['height'], 'M', self.persons)
+
+        self.avg_women = get_mean_by_sex(
+            self.total_women['height'], 'F', self.persons)
 
     def test_get_tallest_by_sex(self):
         self.assertDictEqual(get_tallest_by_sex('M', self.persons), self.tallest_man,
